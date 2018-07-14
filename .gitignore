@@ -1,0 +1,9 @@
+# Compiled Class file
+*.class
+
+# Log files
+*.log
+
+# Package Files #
+*.jar
+/.metadata/
