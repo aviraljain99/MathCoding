@@ -6,4 +6,7 @@
 
 # Package Files #
 *.jar
-/.metadata/
+.metadata/
+
+.recommenders/
+bin/

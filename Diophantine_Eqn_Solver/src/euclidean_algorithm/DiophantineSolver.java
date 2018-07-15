@@ -2,8 +2,17 @@ package euclidean_algorithm;
 
 
 /**
- * @author Aviral
- *
+ * TODO: <br>
+ * <ul>
+ * <li> GCD calculation should be fine when either of the <br>
+ * numbers are zero </li>
+ * <li> Need to test more edge cases (larger numbers for example) </li>
+ * <li> Need to test with negative numbers </li>
+ * <li> 13x + 11y = 2, the algorithm comes up x = -10 and y = 12, whereas <br>
+ * a simpler one would be x = 1 and y = -1. Something to think about? </li>
+ * </ul>
+ * 
+ * @author Aviral Jain
  */
 
 public class DiophantineSolver {
@@ -72,7 +81,13 @@ public class DiophantineSolver {
 		int a = (a1 < a2) ? a2 : a1;
 		int b = (a1 > a2) ? a2 : a1;
 		
-		int[] result = recursiveSolver(a, b);
+		int[] result;
+		
+		if (a % b == 0) {
+			result =  new int[] {1, -(a/b - 1)};
+		} else {
+			result = recursiveSolver(a, b);
+		}
 		int factor = c/gcd;
 		result[0] = result[0] * factor;
 		result[1] = result[1] * factor;
@@ -103,7 +118,7 @@ public class DiophantineSolver {
 	private static int[] recursiveSolver(int a, int b) {
 		int[] result = new int[2];
 		int rem = a % b;
-		if ((b % rem) == 0) {
+		if (b % rem == 0) {
 			/* In this base case:
 			 * 
 			 * 		a = bq + r, where r is the remainder
